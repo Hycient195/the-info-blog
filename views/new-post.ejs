@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+    <style>
+        textarea{
+            height : 300px;
+            width : 80%;
+            /* padding : 10px; */
+            border-radius: 5px;
+        }
+        textarea:focus{
+            border : 2px solid sienna !important;
+        }
+        input.text{
+            padding : 0px 0px 0px 5px  !important;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <div class="container orange lighten-4">
+        <form action="/new-post" method="POST" class=" section container">
+            <div class="input-field center">
+                <!-- <label for="title"></label>
+                <i class="material-icons prefix"></i> -->
+                <input type="text" name="title" placeholder="enter the title of your post"
+                class=" orange lighten-5 flow-text text">
+            </div>
+
+            <div class="input-field center">
+                <textarea name="content" id="content" cols="200" rows="200" class=" orange lighten-5"
+                placeholder="Enter the content of your post"></textarea>
+            </div>
+
+            <!-- <div class="input-field">
+                <label for="name" class="right">Name</label>
+                <i class="material-icons prefix"></i>
+                <input id="name" type="text" placeholder="enter your name" class=""
+                    name="submitter">
+            </div> -->
+
+            <div class="input-field center" >
+                <input type="submit" class="orange btn ">
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

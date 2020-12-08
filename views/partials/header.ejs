@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .logo{
+            font-size: 19px !important;
+            color: cyan;
+        }
+        .space{
+            height: 5px;
+            background: linear-gradient(90deg, pink, cyan)
+        }
+    </style>
+</head>
+<body>
+    <header class="cyan ">
+        <nav class="nav-wrapper  red">
+            <div class="container">
+
+                <div class="brand-log logo left">
+                    HYPE MEDIA BLOG
+                </div>
+                <ul class="right hide-on-med-and-down"> 
+                    <li><a href="/new-post">Add a new post</a></li>
+                    <li><a href="/login-page">User portal</a></li>
+                </ul>
+                <i class=" right material-icons sidenav-trigger btn pulse red darken-1 hide-on-large-only" data-target="mobile-menu">
+                    menu
+                </i>
+            </div>
+        </nav>
+        <div class="sidenav yellow lighten-4" id="mobile-menu">
+            <h4 class="center">Quick Navigation</h4>
+
+            <ul class="container hide-on-med-and-up"> 
+                <li><a href="/new-post">Add a new post</a></li>
+                <li><a href="/login-page">User portal</a></li>
+            </ul>
+        </div>
+        <div class="pink space">
+
+        </div>
+    </div>   
+</header>
+</body>
+<script>
+
+    const menu = document.querySelector('.sidenav')
+    M.Sidenav.init(menu)
+</script>
+</html>

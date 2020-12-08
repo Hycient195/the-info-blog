@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <form action="/sign-up" class="container" method="POST">
+        <div class="input-field">
+            <label for=""></label>
+            <input type="text" class="" name="firstName" placeholder="First name" id="">
+        </div>
+
+        <div class="input-field">
+            <label for=""></label>
+            <input type="text" class="" name="lastName" placeholder="Last name" id="">
+        </div>
+
+        <div class="input-field">
+            <label for=""></label>
+            <input type="text" class="" name="username" placeholder="Username" id="">
+        </div>
+
+        <div class="input-field">
+            <label for=""></label>
+            <input type="password" class="" name="password" placeholder="Password" id="">
+        </div>
+
+        <div class="">
+            <label for="male">
+                <input type="radio" name="gender" id="male">
+                <span>Male</span>
+            </label>
+            <label for="female">
+                <input type="radio" name=gender id="female">
+                <span>Female</span>
+            </label>
+            
+        </div>
+
+        <div class="input-field center">
+            <input type="submit" class="btn">
+        </div>
+    </form>
+</body>
+</html>

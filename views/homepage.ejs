@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+    <style>
+        a.title{
+            border-left: 5px solid red;
+            padding-left: 5px;
+            color : rgb(9, 9, 92);
+            font-size: 23px;
+            /* font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+        }
+        p{
+            color : royalblue;
+            padding-left: 10px;
+            font-family:monospace;
+            
+            font-size: 12px;
+        }
+        #search{
+            /* border: none !important; */
+            color: sienna;
+            padding : 0px 0px 0px 5px;
+            height : 45px;
+            /* border-radius: 20px; */
+            /* margin-right: 10px; */
+            /* border: 1px solid sienna; */
+        }
+        #search:focus{
+            border-left: 2px solid rgb(9, 182, 182);
+        }
+        #search-btn{
+            height : 45px;
+            width : 55px;
+            /* border-radius: 0px !important; */
+        }
+        .modal{
+            padding : 0px 20px 10px 20px;
+            border-radius : 10px;
+        }
+    </style>
+</head>
+<body class="orange lighten-5">
+    <%- include('partials/header.ejs') %>
+
+    <div class="container row">
+        <% if(user !== undefined ){ %>
+            <p class=" right">
+                Welcome Back <b class="user"><%= user %></b>
+                <a class="material-icons right yellow-text text-darken-3"
+                    id="" href="/logout"> cancel</a>
+            </p>
+        <% } %>
+
+    </div>
+    
+
+    <form action="/blog-posts/search" method="GET" class=" container row right">
+        <input type="text" class="col s9 white" id="search" 
+            name="search" placeholder="Search by title or writer">
+        <button class=" btn " id="search-btn"><i class="material-icons ">search</i></button>
+    </form>
+
+    <main class="">
+        <div class="container">
+            
+            <% if(heading){ %>
+                <h4><%= heading %></h4>
+            <% }else{ %>
+                <h4 class="blog-list row">Top stories</h4>
+                
+            <% } %>
+            
+            <hr>
+            <ul>
+                <% data.forEach((item)=>{ %>
+                    <li class="">
+                        <div class="row">
+                            <a href="/blogs/<%= item._id %>" class="title">
+                                <%= item.title %> 
+                            </a>
+                            <% if(user == item.submitter ){ %>
+                                <a class="material-icons right brown-text modal-trigger"
+                                     href="#modal1">
+                                    delete
+                                </a>                              
+                            <% } %>      
+                        </div>  
+
+                        <p class="snippet"><%= item.content %></p>
+
+                        <div class="modal container yellow lighten-4" id="modal1">
+                            <div class="modal-content">
+                                <p class="flow-text">
+                                    are you sure you want to delete your post?
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="modal-footer yellow lighten-4">
+                                <button data-doc="<%= item._id %>" class="delete btn red">Confirm</button>
+                                <button class="modal-close btn green accent-4">Cancel</button>
+                            </div>
+                        </div>
+
+                    </li>
+                    
+                <% }) %>
+                
+            </ul>
+
+        </div>
+    </main>
+
+    
+
+    <footer>
+
+    </footer>
+</body>
+<script>
+
+const del = document.querySelectorAll('.delete')
+    del.forEach((eachTodo)=>{
+        eachTodo.addEventListener('click', ()=>{
+        const blogId = `/blogs/delete/${eachTodo.dataset.doc}`
+
+        fetch(blogId, {
+            method : 'DELETE'
+        })
+            .then(()=>{
+                location.reload()
+                console.log('delete request fired on ' + blogId)
+            })
+            .catch(()=>{
+                console.log('unable to execute delete request')
+            })
+    })
+
+    })
+    
+    /* triggering materialize modal */
+    let modal = document.querySelector('.modal')
+    M.Modal.init(modal)
+    // const user = document.querySelector('.user')
+    // let loggedInUser = `${user.textContent}`
+    // fetch(loggedInUser,{
+    //     method : "GET"
+    // })
+    //     .then(()=>{
+    //         console.log('Something cool')
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err)
+    //     })
+</script>
+</html>

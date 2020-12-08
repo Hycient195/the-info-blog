@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+    <style>
+        .avatar{
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <form class="container" action="/login" method="POST">
+        <div class="row">
+            <div class="col l6 hide-on-med-and-down">
+                <img src="" class="responsive-img" alt="side avatar"/>
+            </div>
+            <div class="col s10 l6 offset-s1">
+                <h4 class="center">Login</h4>
+                <div class="center">
+                    <img src="/avatars/login-avatar.png" alt="Student avatar" class="avatar"/>
+                </div>
+            <div class="input-field">
+                <i class="material-icons prefix" >person</i>
+                <label for="username">username</label>
+                <input id="username" type="text" name="username"/>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix" >lock</i>
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password"/>
+            </div>
+
+            <!-- <div class="input-field">
+                <p>
+                    <label htmlFor="">
+                    
+                        <input name="remember" id=" remember" type="checkbox"/>
+                        <span>Remember me</span>
+                    </label>
+                </p> 
+            </div> -->
+            <% if(message !== ""){ %>
+                <div class="center">
+                    <p class="red-text"><%= message %></p>
+                </div>
+            <% } %>
+            
+            <div class="center">
+                    Don't have an account? click <a href="/sign-up-page" class="">here</a> to sign up
+            </div>
+
+            <div class="input-field center">
+                <button type=" button" class="btn red accent-2">Login</button>
+            </div>
+            
+            </div>
+        </div>
+    </form>
+</body>
+</html>
